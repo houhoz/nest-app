@@ -5,6 +5,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
 import { PostsEntity } from './posts/posts.entity';
+import { User } from './user/entities/user.entity';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import envConfig from '../config/env';
 
 @Module({
@@ -18,7 +21,7 @@ import envConfig from '../config/env';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: 'mysql', // 数据库类型
-        entities: [PostsEntity], // 数据表实体
+        entities: [PostsEntity, User], // 数据表实体
         host: configService.get('DB_HOST', 'localhost'), // 主机，默认为localhost
         port: configService.get<number>('DB_PORT', 3306), // 端口号
         username: configService.get('DB_USER', 'root'), // 用户名
@@ -29,6 +32,8 @@ import envConfig from '../config/env';
       }),
     }),
     PostsModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
