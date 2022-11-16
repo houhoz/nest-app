@@ -13,6 +13,7 @@ async function bootstrap() {
   // 全局注册拦截器
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors();
   // 设置swagger文档
   const config = new DocumentBuilder()
     .setTitle('管理后台')

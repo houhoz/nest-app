@@ -3,6 +3,13 @@ import { ConfigService, ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PlayerModule } from './player/player.module';
+import { MatchModule } from './match/match.module';
+import { TeamModule } from './team/team.module';
+import { PlayerEntity } from './player/entities/player.entity';
+import { MatchEntity } from './match/entities/match.entity';
+import { TeamEntity } from './team/entities/team.entity';
+
 import envConfig from '../config/env';
 
 @Module({
@@ -16,7 +23,7 @@ import envConfig from '../config/env';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: 'mysql', // 数据库类型
-        entities: [], // 数据表实体
+        entities: [PlayerEntity, MatchEntity, TeamEntity], // 数据表实体
         host: configService.get('DB_HOST', 'localhost'), // 主机，默认为localhost
         port: configService.get<number>('DB_PORT', 3306), // 端口号
         username: configService.get('DB_USER', 'root'), // 用户名
@@ -26,6 +33,9 @@ import envConfig from '../config/env';
         synchronize: true, //根据实体自动创建数据库表， 生产环境建议关闭
       }),
     }),
+    PlayerModule,
+    MatchModule,
+    TeamModule,
   ],
   controllers: [AppController],
   providers: [AppService],
