@@ -23,6 +23,7 @@ export class AuthenticationController {
   async register(@Body() registrationData: RegisterDto) {
     return this.authenticationService.register(registrationData);
   }
+
   @HttpCode(200)
   @UseGuards(LocalAuthenticationGuard)
   @Post('log-in')
