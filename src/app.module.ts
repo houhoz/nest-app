@@ -10,6 +10,7 @@ import { UsersModule } from './users/users.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { ExceptionsLoggerFilter } from './utils/exceptionsLogger.filter';
 import { CategoriesModule } from './categories/categories.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { CategoriesModule } from './categories/categories.module';
     UsersModule,
     AuthenticationModule,
     CategoriesModule,
+    FilesModule,
   ],
   controllers: [AppController],
   providers: [
