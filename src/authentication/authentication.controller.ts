@@ -13,7 +13,7 @@ import { AuthenticationService } from './authentication.service';
 import RequestWithUser from './requestWithUser.interface';
 import RegisterDto from './dto/register.dto';
 import { LocalAuthenticationGuard } from './localAuthentication.guard';
-import JwtAuthenticationGuard from '../authentication/jwt-authentication.guard';
+import JwtAuthenticationGuard from './jwt-authentication.guard';
 
 @Controller('authentication')
 export class AuthenticationController {
