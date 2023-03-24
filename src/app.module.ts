@@ -11,6 +11,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { ExceptionsLoggerFilter } from './utils/exceptionsLogger.filter';
 import { CategoriesModule } from './categories/categories.module';
 import { FilesModule } from './files/files.module';
+import { PrivateFilesModule } from './private-files/private-files.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { FilesModule } from './files/files.module';
     AuthenticationModule,
     CategoriesModule,
     FilesModule,
+    PrivateFilesModule,
   ],
   controllers: [AppController],
   providers: [

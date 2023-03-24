@@ -30,7 +30,7 @@ export class PostsService {
   }
 
   async findOne(id: number) {
-    const post = await this.postsRepository.find({
+    const post = await this.postsRepository.findOne({
       where: { id },
       relations: ['author'],
     });
@@ -42,7 +42,7 @@ export class PostsService {
 
   async update(id: number, post: UpdatePostDto) {
     await this.postsRepository.update(id, post);
-    const updatedPost = await this.postsRepository.find({
+    const updatedPost = await this.postsRepository.findOne({
       where: { id },
       relations: ['author'],
     });
