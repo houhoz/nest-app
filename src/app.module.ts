@@ -12,6 +12,7 @@ import { ExceptionsLoggerFilter } from './utils/exceptionsLogger.filter';
 import { CategoriesModule } from './categories/categories.module';
 import { FilesModule } from './files/files.module';
 import { PrivateFilesModule } from './private-files/private-files.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -26,6 +27,13 @@ import { PrivateFilesModule } from './private-files/private-files.module';
         PORT: Joi.number(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION_TIME: Joi.string().required(),
+        ELASTICSEARCH_NODE: Joi.string(),
+        ELASTICSEARCH_USERNAME: Joi.string(),
+        ELASTICSEARCH_PASSWORD: Joi.string(),
+        UPYUN_SERVICE_NAME: Joi.string(),
+        UPYUN_OPERATOR_NAME: Joi.string(),
+        UPYUN_OPERATOR_PASSWORD: Joi.string(),
+        UPYUN_DOMAIN_NAME: Joi.string(),
       }),
     }),
     DatabaseModule,
@@ -34,6 +42,7 @@ import { PrivateFilesModule } from './private-files/private-files.module';
     CategoriesModule,
     FilesModule,
     PrivateFilesModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [
